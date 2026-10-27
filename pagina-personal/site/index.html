@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Página personal de Alvaro Sanchez Segura, estudiante de DAW: perfil, formación, habilidades y contacto.">
+  <title>Alvaro Sanchez Segura · Página personal</title>
+  <link rel="icon" href="img/avatar.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="cabecera-interior">
+      <img class="avatar" src="img/avatar.svg" alt="Avatar de Alvaro Sanchez Segura" width="88" height="88">
+      <h1 class="identidad">
+        <span class="identidad-nombre">Alvaro Sanchez Segura</span>
+        <span class="identidad-titular">Estudiante de DAW · Desarrollo web accesible</span>
+      </h1>
+      <nav class="menu" aria-label="Principal">
+        <ul>
+          <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+          <li><a href="index.html#formacion">Formación</a></li>
+          <li><a href="index.html#habilidades">Habilidades</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="contenedor">
+    <section id="sobre-mi" class="seccion">
+      <h2>Sobre mí</h2>
+      <div class="seccion-cuerpo">
+        <p class="entradilla">Una persona a la que le gusta el deporte, la programación y las redes. Me enfoco en el aprendizaje continuo dentro del desarrollo de aplicaciones web y la administración de sistemas. Busco crear proyectos funcionales, accesibles y bien estructurados.</p>
+        <p>
+          <a class="boton" href="proyectos.html">
+            Ver mis proyectos
+            <svg class="icono" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section id="formacion" class="seccion">
+      <h2>Formación</h2>
+      <ol class="seccion-cuerpo formacion">
+        <li>
+          <span class="periodo">23-25</span>
+          <div>
+            <h3><abbr title="Sistemas Microinformáticos y Redes">SMR</abbr></h3>
+            <p>IES San Juan Bosco</p>
+          </div>
+        </li>
+        <li>
+          <span class="periodo">25-Act.</span>
+          <div>
+            <h3><abbr title="Desarrollo de Aplicaciones Web">DAW</abbr></h3>
+            <p>IES Ramón Arcas Meca</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="habilidades" class="seccion">
+      <h2>Habilidades</h2>
+      <ul class="seccion-cuerpo habilidades">
+        <li>Buena comunicación</li>
+        <li>Redes LAN y WAN</li>
+        <li>Resolución de problemas</li>
+        <li>PHP</li>
+        <li>Python</li>
+        <li>Java</li>
+        <li>HTML/CSS/JS</li>
+      </ul>
+    </section>
+
+    <section id="contacto" class="seccion">
+      <h2>Contacto</h2>
+      <div class="seccion-cuerpo">
+        <p>Si quieres comentar un proyecto o una oportunidad de prácticas, escríbeme o echa un vistazo a mi código.</p>
+        <ul class="acciones">
+          <li>
+            <a class="boton" href="mailto:4075293@alu.murciaeduca.es">
+              <svg class="icono" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              4075293@alu.murciaeduca.es
+            </a>
+          </li>
+          <li>
+            <a class="boton boton-secundario" href="https://github.com/Web1-wabo" target="_blank" rel="noopener noreferrer">
+              GitHub · Web1-wabo
+              <svg class="icono" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="sr-only">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="pie-interior contenedor">
+      <p>© <span id="anio">2026</span> Alvaro Sanchez Segura</p>
+      <button class="boton boton-secundario volver-arriba" type="button">
+        <svg class="icono" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        Volver arriba
+      </button>
+    </div>
+  </footer>
+</body>
+</html>

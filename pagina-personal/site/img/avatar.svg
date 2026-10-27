@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-labelledby="titulo-avatar">
+  <title id="titulo-avatar">Avatar de Alvaro Sanchez Segura</title>
+  <defs>
+    <clipPath id="recorte">
+      <circle cx="80" cy="80" r="80"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#recorte)">
+    <!-- Fondo azul primario de la paleta -->
+    <rect width="160" height="160" fill="#2563EB"/>
+    <!-- Silueta humana en blanco: cabeza y hombros -->
+    <circle cx="80" cy="62" r="27" fill="#FFFFFF"/>
+    <path d="M24 168c0-34 25-62 56-62s56 28 56 62z" fill="#FFFFFF"/>
+    <!-- Detalle sutil en el color de acento -->
+    <circle cx="80" cy="80" r="77" fill="none" stroke="#F59E0B" stroke-opacity="0.9" stroke-width="3"/>
+  </g>
+</svg>
