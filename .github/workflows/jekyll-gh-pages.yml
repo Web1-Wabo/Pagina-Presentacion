@@ -1,51 +1,87 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+# Nombre del workflow para identificarlo en la pestaña Actions de GitHub
+name: "Tests y despliegue en GitHub Pages"
 
 on:
-  # Runs on pushes targeting the default branch
+  # Se ejecuta automáticamente al hacer push a la rama principal (main)
   push:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+  # Se ejecuta cuando se abre o actualiza una Pull Request hacia main
+  pull_request:
+    branches: ["main"]
+  # Permite ejecutar el workflow de forma manual desde la interfaz web de GitHub
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Permisos mínimos globales: lectura del repositorio
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Evita ejecuciones simultáneas de despliegue
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Build job
-  build:
+  # -------------------------------------------------------------
+  # JOB 1: PASAR PRUEBAS UNITARIAS Y DE CONTENIDO (Node.js 22)
+  # -------------------------------------------------------------
+  tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./pagina-personal/site
-          destination: ./_site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # Descarga el código del repositorio
+      - name: Descargar repositorio
+        uses: actions/checkout@v7
 
-  # Deployment job
-  deploy:
+      # Configura el entorno de ejecución con Node.js 22 y activa la caché de dependencias npm
+      - name: Configurar Node.js 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: "npm"
+
+      # Instala exactamente las dependencias del package-lock.json
+      - name: Instalación limpia de dependencias
+        run: npm ci
+
+      # Ejecuta las pruebas (html-validate y tests de Node)
+      - name: Ejecutar pruebas
+        run: npm test
+
+  # -------------------------------------------------------------
+  # JOB 2: DESPLIEGUE EN GITHUB PAGES
+  # -------------------------------------------------------------
+  despliegue:
+    # Solo se ejecuta si el job de tests ha finalizado con éxito
+    needs: tests
+    # No se ejecuta en Pull Requests, solo en la rama main oficial
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+
+    # Permisos necesarios para autenticarse y publicar en GitHub Pages
+    permissions:
+      pages: write
+      id-token: write
+
+    # Entorno de despliegue de GitHub con la URL final proyectada
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Deploy to GitHub Pages
+      # Descarga el código
+      - name: Descargar repositorio
+        uses: actions/checkout@v7
+
+      # Prepara el entorno de Pages
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v6
+
+      # Empaqueta la carpeta "site" (donde está tu index.html) para el despliegue
+      - name: Subir artefacto de GitHub Pages
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+      # Publica los archivos cargados en el paso anterior en el servidor público
+      - name: Desplegar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
