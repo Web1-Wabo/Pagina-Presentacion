@@ -14,7 +14,7 @@ export const PERFIL = {
     '--color-secundario': '#0F172A',
     '--color-fondo': '#F8FAFC',
     '--color-texto': '#1E293B',
-    '--color-acento': '#F59E0B'
+    '--color-acento': '#F59E0A'
   },
   fuenteTitulos: 'Georgia, serif',
   fuenteTexto: 'system-ui, -apple-system, sans-serif',
