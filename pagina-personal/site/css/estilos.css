@@ -9,7 +9,7 @@
   --color-secundario: #0F172A;
   --color-fondo: #F8FAFC;
   --color-texto: #1E293B;
-  --color-acento: #F59E0B;
+  --color-acento: #F59E0A;
 
   /* Tokens semánticos (cambian en modo oscuro) */
   --fondo: var(--color-fondo);
